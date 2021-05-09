@@ -1,6 +1,7 @@
 package com.example.mvc.controller.response
 
 import com.example.mvc.model.http.UserRequest
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -31,5 +32,15 @@ class ResponseApiController {
     @PostMapping("")
     fun postMapping(@RequestBody userRequest: UserRequest?): ResponseEntity<Any> {
         return ResponseEntity.status(200).body(userRequest)
+    }
+
+    @PutMapping("")
+    fun putMapping(@RequestBody userRequest: UserRequest?): ResponseEntity<UserRequest> {
+        return ResponseEntity.status(HttpStatus.CREATED).body(userRequest)
+    }
+
+    @DeleteMapping("/{id}")
+    fun deleteMapping(@PathVariable id:Int): ResponseEntity<Any> {
+        return ResponseEntity.status(500).body(null)
     }
 }
